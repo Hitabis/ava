@@ -271,7 +271,7 @@ test('findHelpersAndTests finds tests (just .js)', async t => {
 		'test.js',
 		'test/baz.js',
 		'test/deep/deep.js'
-	].map(file => path.normalize(path.join(fixtureDir, file))).sort();
+	].map(file => path.join(fixtureDir, file)).sort();
 
 	const {tests: actual} = await globs.findHelpersAndTests({
 		cwd: fixtureDir,
@@ -289,7 +289,7 @@ test('findHelpersAndTests finds tests (.js, .jsx)', async t => {
 		'test/do-not-compile.js',
 		'test/foo.jsx',
 		'test/sub/bar.jsx'
-	].sort().map(file => path.normalize(path.join(fixtureDir, file)));
+	].sort().map(file => path.join(fixtureDir, file));
 
 	const {tests: actual} = await globs.findHelpersAndTests({
 		cwd: fixtureDir,
@@ -308,7 +308,7 @@ test('findHelpersAndTests finds helpers (just .js)', async t => {
 		'sub/directory/__tests__/_foo.js',
 		'test/helpers/test.js',
 		'test/_foo-help.js'
-	].sort().map(file => path.normalize(path.join(fixtureDir, file)));
+	].sort().map(file => path.join(fixtureDir, file));
 
 	const {helpers: actual} = await globs.findHelpersAndTests({
 		cwd: fixtureDir,
@@ -326,7 +326,7 @@ test('findHelpersAndTests finds helpers (.js and .jsx)', async t => {
 		'test/sub/_helper.jsx',
 		'test/helpers/a.jsx',
 		'test/helpers/b.js'
-	].sort().map(file => path.normalize(path.join(fixtureDir, file)));
+	].sort().map(file => path.join(fixtureDir, file));
 
 	const {helpers: actual} = await globs.findHelpersAndTests({
 		cwd: fixtureDir,
@@ -348,7 +348,7 @@ test('findTests finds tests (just .js)', async t => {
 		'test.js',
 		'test/baz.js',
 		'test/deep/deep.js'
-	].map(file => path.normalize(path.join(fixtureDir, file))).sort();
+	].map(file => path.join(fixtureDir, file)).sort();
 
 	const {tests: actual} = await globs.findTests({
 		cwd: fixtureDir,
@@ -366,7 +366,7 @@ test('findTests finds tests (.js, .jsx)', async t => {
 		'test/do-not-compile.js',
 		'test/foo.jsx',
 		'test/sub/bar.jsx'
-	].sort().map(file => path.normalize(path.join(fixtureDir, file)));
+	].sort().map(file => path.join(fixtureDir, file));
 
 	const {tests: actual} = await globs.findTests({
 		cwd: fixtureDir,
@@ -384,7 +384,7 @@ test('findTests excludes helpers', async t => {
 		'test/do-not-compile.js',
 		'test/foo.jsx',
 		'test/sub/bar.jsx'
-	].sort().map(file => path.normalize(path.join(fixtureDir, file)));
+	].sort().map(file => path.join(fixtureDir, file));
 
 	const {tests: actual} = await globs.findTests({
 		cwd: fixtureDir,
